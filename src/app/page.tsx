@@ -49,7 +49,7 @@ export default function Home() {
             <form onSubmit={handleSubmit(submitForm)}>
               <InputField
                 type="text"
-                placeholder="abc@gmail.com"
+                placeholder="ie:abc@gmail.com"
                 name="email"
                 autoComplete="email"
                 register={register}
@@ -57,10 +57,10 @@ export default function Home() {
               />
               <InputField
                 type="password"
-                placeholder="eneter your password"
+                placeholder="enter a strong password"
                 name="password"
                 autoComplete="password"
-                register={register}
+                register={register}	
                 error={errors.password}
               />
               <BlackButton name="Register Here" />
