@@ -5,9 +5,12 @@ import InputField from "@/components/InputField";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/services/firebase";
 import { useRouter } from "next/navigation";
+import { HOME_ROUTE } from "@/constants/routes";
 
 export default function Home() {
   const router = useRouter();
+  //verify firebase authentication
+  console.log("Verify", auth.config);
 
   const {
     handleSubmit,
@@ -19,17 +22,20 @@ export default function Home() {
   //logged the object on form submission
   const submitForm = async (values: any) => {
     console.log("Register form values", values);
-    createUserWithEmailAndPassword(auth, values.email, values.password)
-      .then((response) => {
-        alert("User Registration Successfull");
-        reset();
-        router.push("/home");
-      })
-      .catch((e) => {
-        console.log("user already registered", e.mesasge);
-        reset();
-        alert("something went wrong try again");
-      });
+    try {
+      const response = await createUserWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      );
+      alert("User Registration Successfull");
+      reset();
+      router.push(HOME_ROUTE);
+    } catch (e) {
+      console.error("user already registered", e);
+      reset();
+      alert("something went wrong try again");
+    }
   };
 
   return (
@@ -60,7 +66,7 @@ export default function Home() {
                 placeholder="enter a strong password"
                 name="password"
                 autoComplete="password"
-                register={register}	
+                register={register}
                 error={errors.password}
               />
               <BlackButton name="Register Here" />
