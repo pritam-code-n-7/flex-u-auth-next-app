@@ -6,14 +6,7 @@ import { getAuth } from "firebase/auth";
 
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyB3ECgeP8i9Z8JKWe7k3pb2Q0ZOqn9ZEeg",
-  authDomain: "next-u-auth.firebaseapp.com",
-  projectId: "next-u-auth",
-  storageBucket: "next-u-auth.appspot.com",
-  messagingSenderId: "503948890778",
-  appId: "1:503948890778:web:2e41729dcc7f05d19f0523"
-};
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
