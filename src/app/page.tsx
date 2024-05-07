@@ -1,3 +1,4 @@
+"use client";
 import { SignupValidation } from "@/ValidationSchema/auth";
 import BlackButton from "@/components/Button";
 import InputField from "@/components/InputField";
@@ -7,8 +8,11 @@ export default function Home() {
     handleSubmit,
     register,
     formState: { errors },
-  } = SignupValidation;
+  } = SignupValidation();
 
+  const submitForm = (values: object) => {
+    console.log("form values", values);
+  };
   return (
     <main>
       <div
@@ -23,15 +27,16 @@ export default function Home() {
             Sign up to access exclusive content and features
           </p>
           <div className="space-y-6">
-            <form action="">
+            <form onSubmit={handleSubmit(submitForm)}>
               <InputField
                 type="text"
                 placeholder="abc@gmail.com"
                 name="email"
+                register={register}
+                error={errors.email}
               />
+              <BlackButton name="Register Here" />
             </form>
-
-            <BlackButton name="Register Here" />
           </div>
         </div>
       </div>
