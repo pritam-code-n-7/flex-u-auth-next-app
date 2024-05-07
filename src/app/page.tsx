@@ -1,6 +1,14 @@
+import { SignupValidation } from "@/ValidationSchema/auth";
+import BlackButton from "@/components/Button";
 import InputField from "@/components/InputField";
 
 export default function Home() {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = SignupValidation;
+
   return (
     <main>
       <div
@@ -15,15 +23,16 @@ export default function Home() {
             Sign up to access exclusive content and features
           </p>
           <div className="space-y-6">
-          <form action="">
-            <InputField type="text" placeholder="abc@gmail.com" name="email" />
-          </form>
+            <form action="">
+              <InputField
+                type="text"
+                placeholder="abc@gmail.com"
+                name="email"
+              />
+            </form>
 
-          <button className="bg-black text-white rounded py-4 px-6 ">
-            Register Here
-          </button>
+            <BlackButton name="Register Here" />
           </div>
-         
         </div>
       </div>
     </main>
