@@ -6,4 +6,5 @@ export type InputFieldT = {
   name: string;
   register: any;
   error: undefined | ErrorOption;
+  autoComplete?: string;
 };

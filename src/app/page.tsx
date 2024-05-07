@@ -2,17 +2,36 @@
 import { SignupValidation } from "@/ValidationSchema/auth";
 import BlackButton from "@/components/Button";
 import InputField from "@/components/InputField";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/services/firebase";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
   const {
     handleSubmit,
     register,
     formState: { errors },
+    reset,
   } = SignupValidation();
 
-  const submitForm = (values: object) => {
-    console.log("form values", values);
+  //logged the object on form submission
+  const submitForm = async (values: any) => {
+    console.log("Register form values", values);
+    createUserWithEmailAndPassword(auth, values.email, values.password)
+      .then((response) => {
+        alert("User Registration Successfull");
+        reset();
+        router.push("/home");
+      })
+      .catch((e) => {
+        console.log("user already registered", e.mesasge);
+        reset();
+        alert("something went wrong try again");
+      });
   };
+
   return (
     <main>
       <div
@@ -32,8 +51,17 @@ export default function Home() {
                 type="text"
                 placeholder="abc@gmail.com"
                 name="email"
+                autoComplete="email"
                 register={register}
                 error={errors.email}
+              />
+              <InputField
+                type="password"
+                placeholder="eneter your password"
+                name="password"
+                autoComplete="password"
+                register={register}
+                error={errors.password}
               />
               <BlackButton name="Register Here" />
             </form>
