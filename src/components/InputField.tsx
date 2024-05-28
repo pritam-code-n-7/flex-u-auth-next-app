@@ -6,6 +6,7 @@ const InputField = ({
   name,
   placeholder,
   register,
+  login,
   error,
   autoComplete
 }: InputFieldT) => {
@@ -13,6 +14,7 @@ const InputField = ({
     <div>
       <input
         {...register(name)}
+        //{...login(name)}
         type={type}
         name={name}
         id={`field_${name}`}

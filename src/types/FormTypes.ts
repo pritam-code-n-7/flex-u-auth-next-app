@@ -4,7 +4,8 @@ export type InputFieldT = {
   type: string;
   placeholder: string;
   name: string;
-  register: any;
+  register?: any;
+  login?:any;
   error: undefined | ErrorOption;
   autoComplete?: string;
 };
