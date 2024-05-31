@@ -4,11 +4,13 @@ import React from "react";
 const InputField = ({
   type,
   name,
+  onChange,
+  value,
   placeholder,
   register,
   login,
   error,
-  autoComplete
+  autoComplete,
 }: InputFieldT) => {
   return (
     <div>
@@ -17,6 +19,8 @@ const InputField = ({
         //{...login(name)}
         type={type}
         name={name}
+        onChange={onChange}
+        value={value}
         id={`field_${name}`}
         placeholder={placeholder}
         autoComplete={autoComplete}

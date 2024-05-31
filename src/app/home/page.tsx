@@ -1,17 +1,22 @@
-import Link from 'next/link'
-import React from 'react'
+"use client"
+import React from "react";
+import { useAuth } from "@/context/index";
 
-const page = () => {
+const Home = () => {
+  const { currentUser } = useAuth();
   return (
     <div className="container mx-auto py-10 min-h-screen">
       <div className="max-w-lg mx-auto border border-gray-300 p-6 rounded-md shadow-md">
-        <h1 className="text-3xl font-semibold text-center mb-6">Welcome To Our Home</h1>
-        <Link href="/" className="block text-center py-2 px-4 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 transition duration-300">
-          Back
-        </Link>
+        <h1 className="text-3xl font-semibold text-center mb-6">
+          Welcome To Our Home{" "}
+          {currentUser.email
+            ? currentUser.email
+            : ""}
+        </h1>
+       
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default Home;
