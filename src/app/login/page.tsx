@@ -1,5 +1,5 @@
 "use client";
-import { useSignupValidation } from "@/ValidationSchema/valid";
+import { useLoginValidation } from "@/ValidationSchema/valid";
 import BlackButton from "@/components/BlackButton";
 import InputField from "@/components/InputField";
 import { useRouter } from "next/navigation";
@@ -13,14 +13,13 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-
   //initialize user validation
   const {
     handleSubmit,
     register,
     formState: { errors },
     reset,
-  } = useSignupValidation();
+  } = useLoginValidation();
 
   const { userLoggedIn } = useAuth();
 
@@ -79,7 +78,7 @@ const Login: React.FC = () => {
                 autoComplete="current-password"
                 register={register}
                 error={errors.password}
-              />             
+              />
               <div className="flex justify-center">
                 <BlackButton name="Login Here" type="submit" />
               </div>

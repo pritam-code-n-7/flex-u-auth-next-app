@@ -8,7 +8,6 @@ const InputField = ({
   value,
   placeholder,
   register,
-  login,
   error,
   autoComplete,
 }: InputFieldT) => {
@@ -16,7 +15,6 @@ const InputField = ({
     <div>
       <input
         {...register(name)}
-        //{...login(name)}
         type={type}
         name={name}
         onChange={onChange}

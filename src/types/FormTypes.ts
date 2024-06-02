@@ -8,7 +8,6 @@ export type InputFieldT = {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   value:string;
   register?: any;
-  login?:any;
   error: undefined | ErrorOption;
   autoComplete?: string;
 };
