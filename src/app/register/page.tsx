@@ -1,12 +1,12 @@
 "use client";
 import { useSignupValidation } from "@/ValidationSchema/valid";
-import BlackButton from "@/components/BlackButton";
 import InputField from "@/components/InputField";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { doCreateUserWithEmailAndPassword } from "@/services/auth";
 import { useAuth } from "@/context";
 import Link from "next/link";
+import WhiteButton from "@/components/WhiteButton";
 
 const Register: React.FC = () => {
   const [isRegister, setIsRegister] = useState<boolean>(false);
@@ -94,10 +94,10 @@ const Register: React.FC = () => {
               />
 
               <div className="flex justify-center">
-                <BlackButton name="Register Here" type="submit" />
+                <WhiteButton name="Register Here" type="submit" />
               </div>
             </form>
-            <Link className="text-sm text-center" href="/login">
+            <Link className="text-sm text-center text-red-600" href="/login">
               Already have an account! Click here.
             </Link>
           </div>

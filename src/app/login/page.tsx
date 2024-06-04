@@ -83,7 +83,7 @@ const Login: React.FC = () => {
                 <BlackButton name="Login Here" type="submit" />
               </div>
             </form>
-            <Link className="text-sm text-center" href="/register">
+            <Link className="text-sm text-center text-red-600" href="/register">
               Dont have an account! Register here.
             </Link>
           </div>
